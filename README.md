@@ -1,1 +1,1 @@
-converts vtop and vit's moodle infrastructure to dark mode
+converts vtop and vit's moodle infrastructure to dark mode on chrome
