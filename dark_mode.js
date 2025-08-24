@@ -56,7 +56,7 @@ form em, form img, form svg, form image, form video, form embed, form object, fo
   -webkit-filter: invert(0%) !important;
 }
 
-.VITEmblem {
+.VITEmblem, .modal-backdrop {
   filter: invert(0%) !important;
   -webkit-filter: invert(0%) !important;
 }
