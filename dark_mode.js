@@ -2,16 +2,19 @@
 
 console.log("dark mode loaded!");
 
+green = "90deg"
+yellow = "40deg"
+
 // Define your CSS styles
 const styles = `
 
-html {
+html:not(.modal-open) {
   background-color: #FFF !important;
   filter: invert(100%) hue-rotate(90deg) brightness(100%) contrast(85%);
-  -webkit-filter: invert(100%) hue-rotate(90deg) brightness(100%) contrast(85%);
+  -webkit-filter: invert(100%) hue-rotate(90eg) brightness(100%) contrast(85%);
 }
 
-body {
+body:not(.modal-open) {
   background-color: #FFF !important;
 }
 
@@ -56,10 +59,11 @@ form em, form img, form svg, form image, form video, form embed, form object, fo
   -webkit-filter: invert(0%) !important;
 }
 
-.VITEmblem, .modal-backdrop {
+.VITEmblem, .modal {
   filter: invert(0%) !important;
   -webkit-filter: invert(0%) !important;
 }
+
 `;
 
 // Create a <style> element
@@ -70,5 +74,25 @@ styleElement.textContent = styles;
 //img.style.filter = "invert(0%)";
 
 // Inject the <style> element into the <head> of the document
-document.head.appendChild(styleElement);  
+document.head.appendChild(styleElement);
+
+// Function to remove embed#tes
+// Remove modal backdrop if present
+function removeBackdrop() {
+  document.querySelectorAll(".modal-backdrop.show").forEach(el => el.remove());
+}
+
+// Run once in case it's already present
+removeBackdrop();
+
+// Observe DOM changes
+const observer = new MutationObserver(() => {
+  removeBackdrop();
+});
+
+observer.observe(document.body, {
+  childList: true,
+  subtree: true,
+});
+
 
